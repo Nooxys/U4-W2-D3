@@ -119,7 +119,9 @@ public class Main {
         //      EXERCISE 4
 
         List<Order> ordersByDateAndTier = orderList.stream().filter(order -> order.getCustomer().getTier() == 2).filter(order -> order.getOrderDate().isAfter(LocalDate.parse("2024-02-01")) && order.getOrderDate().isBefore(LocalDate.parse("2024-02-28"))).toList();
-        
+        List<Product> finalproducts = new ArrayList<>();
+        ordersByDateAndTier.forEach(order -> order.getProducts().forEach(product -> finalproducts.add(product)));
+        finalproducts.forEach(product -> logger.info(String.valueOf(product)));
 
     }
 
